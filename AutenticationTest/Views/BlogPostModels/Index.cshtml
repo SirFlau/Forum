@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AutenticationTest.Models.Forum.Models.BlogPostModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+@foreach (var item in Model)
+{
+    <div class="form-group">
+        <img height="50" width="50" src="@ViewData[item.User_Id.ToString()]" />
+        <p> <b>Author:</b> @Html.DisplayFor(modelItem => item.User.DisplayName)  <b>Subject:</b> @Html.DisplayFor(modelItem => item.Subject) <b>Date:</b> @Html.DisplayFor(modelItem => item.CreatedDate)</p>
+        <p> <b>Topic:</b> @Html.DisplayFor(modelItem => item.Topic.Name)</p>
+        <p> <b>Content:</b> @Html.DisplayFor(modelItem => item.Content)</p>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </div>
+}
+
